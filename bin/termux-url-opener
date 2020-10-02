@@ -1,0 +1,34 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# URLs do change, so far just for comfort.
+if [[ $1 =~ "yout" ]]; then
+    echo "Looks like are downloading a youtube content:"
+    echo " a) Audio only (m4a)"
+    echo " s) Whole Playlist (480p)"
+    echo " d) 360p Video press d"
+    echo " f) 720p Video press f"
+    echo " g) 1080p Video press g"
+    echo -n "Enter prompt and press enter: "
+    read option
+    
+    # Shared command-line arguments
+    defaults=" --no-warnings --newline -no-mtime --restrict-filenames -o ~/storage/downloads/%(title)s-%(id)s.%(ext)s"
+
+    case $option in
+    a )
+        youtube-dl $defaults -f 140 --extract-audio --audio-format m4a "$@"
+        ;;
+    s )
+        youtube-dl --no-warnings --newline -no-mtime --restrict-filenames -o '~/storage/downloads/%(playlist)s/%(playlist_index)s.%(title)s-%(id)s.%(ext)s' -f 'best[height<=480][ext=mp4]' --merge-output-format mp4 "$@"
+        ;;
+    d )
+        youtube-dl $defaults -f 'best[height<=360][ext=mp4]' --merge-output-format mp4 "$@"
+        ;;
+    f )
+        youtube-dl $defaults -f 'best[height<=720][ext=mp4]' --merge-output-format mp4 "$@"
+        ;;
+    g )
+        youtube-dl $defaults -f 'best[height<=1080][ext=mp4]' --merge-output-format mp4 "$@"
+        ;;
+    esac
+fi
