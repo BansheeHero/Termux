@@ -1,17 +1,19 @@
-Scripts include hooks for using with the rest of Android.
+# Scripts include hooks for using with the rest of Android.
 
-Sources:
-https://wiki.termux.com/wiki/Intents_and_Hooks
-http://ytdl-org.github.io/youtube-dl/index.html
+## Sources:
+* https://wiki.termux.com/wiki/Intents_and_Hooks
+* http://ytdl-org.github.io/youtube-dl/index.html
 
-~/bin/termux-url-opener
+## ~/bin/termux-url-opener
 
 The goal of this script is to recognize the content provided and act accordingly.
-The first use is integration of youtube-dl
+
+### Youtube Downloader
 
 It will change over time, for now, the first working version.
 
-F.A.Q:
+## F.A.Q:
+
 Q) This looks horrible, die in a fire!
 A) Thank you for your attitude, commit your changes :)
 
